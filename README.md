@@ -30,7 +30,7 @@ En esta lista se dividen por que materias y lenguajes se dividirá cada almuno
 - Python: Mirco Karzovnik, Germán Castillo
 - Java: Alan Garrido, Leandro Eugenio
 - JavaScript: Hernán Raso, Florencia Carballo
-- Node: Rocío Palleres, Emanuel Gaudino
+- Node: Nicolás González, Rocío Palleres, Emanuel Gaudino
 
 ### Orden de Scrum Masters:
 En esta lista se encuentran quienes van a ser scrum master semana por semana:
