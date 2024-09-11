@@ -48,6 +48,22 @@
     cursor: pointer;
     opacity: 0.9;
 }
+
+.cart-counter{
+    display: none;
+    position: fixed;
+    top: 89vh;
+    right: 27px;
+    color: #fff;
+    text-align: center;
+    background-color: #ed3434;
+    padding: 4px;
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    font-size: 15px;
+}
+
 .modal-overlay {
     display: none;
     background-color: (0, 0, 0, 0.5);
@@ -171,5 +187,16 @@
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 16px;
+    text-transform: uppercase;
+    transition: bacground-color 0.3 ease;
+    cursor: pointer;
 }
 

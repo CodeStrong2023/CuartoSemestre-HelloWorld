@@ -1,6 +1,8 @@
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
+
 const cartBtn = document.getElementById("cart-btn");
+const cartCounter = document.getElementById("cart-counter");
 
 
 const displayCart = () => {
@@ -28,10 +30,11 @@ const displayCart = () => {
     modalContainer.append(modalHeader);
 
     //modal body
-    cart.forEach((product) => {
-        const modalBody = document.createElement("div")
-        modalBody.className = "modal-body"
-        modalBody.innerHTML = `
+    if (cart.length > 0) {
+        cart.forEach((product) => {
+            const modalBody = document.createElement("div")
+            modalBody.className = "modal-body"
+            modalBody.innerHTML = `
         <div class="product">
         <img src="${product.img}"  class="product-img" />
         <div class="product-info">
@@ -46,45 +49,132 @@ const displayCart = () => {
         <div class="delete-product">❌</div>
     </div>
         `;
-        modalContainer.append(modalBody)
-        const decrese = modalBody.querySelector(".quantity-btn-decrese")
-        decrese.addEventListener('click', () => {
-            if (product.quanty != 1) {
+            modalContainer.append(modalBody)
+            const decrese = modalBody.querySelector(".quantity-btn-decrese")
+            decrese.addEventListener('click', () => {
+                if (product.quanty != 1) {
 
-                product.quanty--;
-                displayCart();
-            }
-        })
-        const increce = modalBody.querySelector(".quantity-btn-increse")
-        increce.addEventListener('click', () => {
+                    product.quanty--;
+                    displayCart();
+                }
+                displayCartCounter();
+            })
+            const increce = modalBody.querySelector(".quantity-btn-increse")
+            increce.addEventListener('click', () => {
                 product.quanty++;
                 displayCart();
-        })
+                displayCartCounter();
+            })
 
-        const deleteProduct = modalBody.querySelector(".delete-product")
-        deleteProduct.addEventListener('click', ()=> {
-            deleteCartProduct(product.id)
-        })
-    });
+            const deleteProduct = modalBody.querySelector(".delete-product")
+            deleteProduct.addEventListener('click', () => {
+                deleteCartProduct(product.id)
+            })
+        });
 
-    //modal footer
-    const totalCompra = cart.reduce((acumulado,elemento) => acumulado + elemento.price * elemento.quanty,0)
 
-    const modalFooter = document.createElement("div")
-    modalFooter.className = 'modal-footer'
-    modalFooter.innerHTML = `
+        //modal footer
+        const totalCompra = cart.reduce((acumulado, elemento) => acumulado + elemento.price * elemento.quanty, 0)
+
+        const modalFooter = document.createElement("div")
+        modalFooter.className = 'modal-footer'
+        modalFooter.innerHTML = `
         <div class="total-price">Total: ${totalCompra}</div>
+        <button class="btn-primary" id="checkout-btn">go to checkout</button>
+        <div id = "button-checkout"></div>
     `;
-    modalContainer.append(modalFooter);
-    
-    
+        modalContainer.append(modalFooter);
+        //mp
+        const mercadopago = new MercadoPago('TEST-c0e65b66-c1f3-4cd7-86f5-1f047ed862a8', {
+            locale: 'es-AR' // The most common are: 'pt-BR', 'es-AR' and 'en-US'
+        });
+
+        const checkoutButton = modalFooter.querySelector("#checkout-btn")
+        checkoutButton.addEventListener("click", function () {
+
+            checkoutButton.remove();
+
+            const orderData = {
+                quantity: 1,
+                description: "compra de ecommerce",
+                price: totalCompra
+            };
+
+            fetch("http://localhost:8080/create_reference", {
+                
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(orderData),
+            })
+                .then(function (response) {
+                    console.log("esto es response: "+ response)
+                    return response.json();
+                })
+                .then(function (preference) {
+                    createCheckoutButton(preference.id);
+
+                    $(".shopping-cart").fadeOut(500);
+                    setTimeout(() => {
+                        $(".container_payment").show(500).fadeIn();
+                    }, 500);
+                })
+                .catch(function (e) {
+                    alert("Unexpected error "+e);
+                    $('#checkout-btn').attr("disabled", false);
+                });
+        });
+
+        function createCheckoutButton(preferenceId) {
+            // Initialize the checkout
+            const bricksBuilder = mercadopago.bricks();
+
+            const renderComponent = async (bricksBuilder) => {
+                if (window.checkoutButton) window.checkoutButton.unmount();
+                await bricksBuilder.create(
+                    'wallet',
+                    'button-checkout', // class/id where the payment button will be displayed
+                    {
+                        initialization: {
+                            preferenceId: preferenceId
+                        },
+                        callbacks: {
+                            onError: (error) => console.error(error),
+                            onReady: () => { }
+                        }
+                    }
+                );
+            };
+            window.checkoutButton = renderComponent(bricksBuilder);
+        }
+
+
+    } else {
+        const modalText = document.createElement("h2");
+        modalText.className = "modal-body"
+        modalText.innerText = "Su carrito está vacio";
+        modalContainer.append(modalText)
+    }
+
 }
 
 cartBtn.addEventListener("click", displayCart);
 
-const deleteCartProduct=(id)=>{
+const deleteCartProduct = (id) => {
     const foundId = cart.findIndex((elemento) => elemento.id === id)
     console.log(foundId)
-    cart.splice(foundId,1)
+    cart.splice(foundId, 1)
     displayCart();
+    displayCartCounter();
+}
+
+const displayCartCounter = () => {
+    const cartLength = cart.reduce((acc, el) => acc + el.quanty, 0);
+    if (cartLength > 0) {
+        cartCounter.style.display = "block";
+        cartCounter.innerText = cartLength;
+    } else {
+        cartCounter.style.display = "none";
+    }
 }
