@@ -1,6 +1,7 @@
 const shopContent = document.getElementById("shopContent")
 const cart = []; //Este es nuestro carrito, un array vacio
 
+
 productos.forEach((product)=>{
     const content = document.createElement("div")
     content.innerHTML= ` 
@@ -30,7 +31,7 @@ productos.forEach((product)=>{
                 id: product.id,
                 productName: product.productName,
                 price: product.price,
-                quanty: product.quanty,
+                quanty: 1,
                 img: product.img
             })
             console.log(cart)
