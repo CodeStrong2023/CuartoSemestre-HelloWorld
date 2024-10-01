@@ -25,6 +25,13 @@ El **marco Scrum** es un enfoque ágil para la gestión de proyectos que se util
    - **Scrum Master**: Facilita el proceso de Scrum, ayuda a eliminar impedimentos y se asegura de que el equipo siga las prácticas ágiles. No es un jefe, sino más bien un guía para el equipo.
    - **Development Team (Equipo de desarrollo)**: Es el grupo de profesionales que realiza el trabajo necesario para crear el producto o solución.
 
+### Organización de clases:
+En esta lista se dividen por que materias y lenguajes se dividirá cada almuno
+- Python: Mirco Karzovnik, Germán Castillo
+- Java: Alan Garrido, Leandro Eugenio
+- JavaScript: Hernán Raso, Florencia Carballo
+- Node: Nicolás González, Rocío Palleres, Emanuel Gaudino
+
 ### Orden de Scrum Masters:
 En esta lista se encuentran quienes van a ser scrum master semana por semana:
 - Germán Castillo
