@@ -14,7 +14,7 @@ public class LibroServicio implements ILibroServicio {
     private LibroRepositorio libroRepositorio;
 
     @Override
-    public List<Libro> ListarLibros() {
+    public List<Libro> listarLibros() {
         return libroRepositorio.findAll();
     }
 

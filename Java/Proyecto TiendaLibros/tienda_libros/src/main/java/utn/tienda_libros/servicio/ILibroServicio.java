@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ILibroServicio {
 
-    public List<Libro> ListarLibros();
+    public List<Libro> listarLibros();
 
     public Libro buscarLibroPorId(Integer idLibro);
 
