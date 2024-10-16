@@ -15,7 +15,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Libro {
-    public Object libro;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idLibro;
