@@ -10,6 +10,8 @@
 - Rocío Palleres
 - Emanuel Gaudino
 
+## [Enlace al repositorio del Proyecto Integrador](https://github.com/CodeStrong2023/PC-hub-e-commerce)
+
 ## Marco Scrum
 ### Que es Scrum?
 El **marco Scrum** es un enfoque ágil para la gestión de proyectos que se utiliza principalmente en el desarrollo de software, aunque también se ha adoptado en otros campos. Scrum se basa en principios ágiles, centrados en la entrega rápida y continua de valor al cliente a través de la colaboración, la adaptación y la mejora constante.
