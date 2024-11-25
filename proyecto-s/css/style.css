@@ -1,11 +1,83 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Sección principal */
+.main-section {
+    padding: 20px;
+}
+
+.objetivo-section {
     text-align: center;
 }
 
-h1 {
-    color: #333;
+.image-section img {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Sección de productos */
+.product-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.product-section div {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Información adicional */
+.info-section {
+    margin: 20px 0;
+}
+
+.about-us, .gallery, .location {
+    margin-bottom: 20px;
+}
+
+.gallery div {
+    display: inline-block;
+    margin: 5px;
+}
+
+.gallery img, .map img {
+    width: 100px;
+    height: auto;
+}
+
+/* Pie de página */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer .social-media img {
+    width: 30px;
+    height: auto;
+    margin: 0 10px;
 }
