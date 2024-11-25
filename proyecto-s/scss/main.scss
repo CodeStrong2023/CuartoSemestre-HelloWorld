@@ -1,13 +1,14 @@
 $primary-color: rgb(90, 89, 28);
-
 $secundary-color: rgb(224, 124, 31);  
-
 $tertiary-color: rgb(226, 226, 154);
-
+$primary-tex-color:rgb(63, 38, 1);
+$font-stack: 'IBM Plex Sans', sans-serif;
+$paragraph-size: 1,5em;
 $primary-tex-color:rgb(63, 38, 1);
 
 $font-stack: 'IBM Plex Sans', sans-serif;
 
+$paragraph-size: 1,5em;
 
 body{
 
@@ -21,10 +22,26 @@ body{
     font-family:$font-stack;
 
 }
+
 nav{
-width: 100%;
-height : 100px;
+    width: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color:$primary-tex-color;
+
+    padding: 15px;
+
+    p{
+
+        font-size: 1.5;
+
+        padding-left: 30px ;
+    }
 }
+
 
 main{
     background-color: $primary-color;
@@ -34,4 +51,92 @@ main{
 footer{
 width: 100%;
 height:25px;
+}
+article{
+
+    width: auto;
+
+    color:$primary-tex-color;
+
+    display:flex;
+
+    justify-content: space-around;
+
+    .info-section{
+
+        display: flex;
+
+        flex-direction: column;
+
+        padding-top: 50px,;
+
+        gap: 25px;  
+    
+    .info-section{
+        width: 50%;
+        background-color: whitesmoke; 
+        p{
+
+            font-size:$paragraph-size ;
+    
+        }
+    
+        button{
+    
+            width: 12vw;
+    
+            padding: 20px;
+    
+            background-color:$quaternion-color;
+    
+            background: none;
+    
+            border-style: none;
+    
+            border-radius: 35px;
+    
+            color:white
+    
+            font-size 1em;
+    
+          }
+    
+    
+        img{
+    
+            width: 25vw;
+    
+            border-radius: 19px;
+    
+            }
+    }
+    .info-section{
+
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px,;
+        gap: 25px;  
+
+    }
+
+    h1{
+
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+
+    }
+
+    p{
+
+        font-size:$paragraph-size ;
+
+    }
+    .imagen-section{
+        width: 50%;
+        background-color: rgb(119, 109, 64);
+
+    }
+}
+
 }
