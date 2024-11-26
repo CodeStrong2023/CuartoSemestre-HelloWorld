@@ -1,142 +1,147 @@
 $primary-color: rgb(90, 89, 28);
-$secundary-color: rgb(224, 124, 31);  
+$secondary-color: rgb(224, 124, 31);
 $tertiary-color: rgb(226, 226, 154);
-$primary-tex-color:rgb(63, 38, 1);
+$primary-text-color: rgb(63, 38, 1);
 $font-stack: 'IBM Plex Sans', sans-serif;
-$paragraph-size: 1,5em;
-$primary-tex-color:rgb(63, 38, 1);
+$paragraph-size: 1.5em;
 
-$font-stack: 'IBM Plex Sans', sans-serif;
-
-$paragraph-size: 1,5em;
-
-body{
-
-
-    background-color: rgb(241, 208, 115);
-
-    margin: 0;
-
-    padding: 0;
-
-    font-family:$font-stack;
-
+@mixin flexCenter($direction, $content, $align) {
+  display: flex;
+  flex-direction: $direction; 
+  justify-content: $content;
+  align-items: $align; 
 }
 
-nav{
+@mixin buttonStyle {
+  button {
+    background: none;
+    border-style: none;
+    cursor: pointer; 
+  }
+}
+
+@mixin iconStyle($size, $color) {
+  width: $size;
+  height: $size;
+  fill: $color; 
+  transition: all 0.3s ease; 
+  &:hover {
+    transform: scale(1.1); 
+  }
+}
+.article {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 20px; 
+    padding: 20px;
+    background-color: $tertiary-color;
+    border-radius: 8px;
+  }
+
+body {
+  background-color: rgb(241, 208, 115);
+  margin: 0;
+  padding: 0;
+  font-family: $font-stack;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  color: $primary-text-color;
+  padding: 15px;
+
+  p {
+    font-size: $paragraph-size;
+    padding-left: 30px;
+  }
+}
+
+main {
+  background-color: rgb(214, 201, 176);
+
+  .section1 {
+    padding: 20px;
+
+
+    .card-section1 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+
+    .product-card {
+      width: 250px;
+      height: 350px;
+      background-color: $secondary-color;
+      color: $primary-text-color;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h3 {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    p {
+      font-size: 0.9em;
+    }
+  }
+
+  .section2 {
+    @extend .section1;
+    .product-card {
+      background-color: $tertiary-color;
+      color: rgb(37, 51, 12);
+    }
+
     width: auto;
+    height: auto;
+    background-color: rgb(214, 201, 176);
+    padding: 60px;
 
-    display: flex;
-
-    justify-content: space-between;
-
-    color:$primary-tex-color;
-
-    padding: 15px;
-
-    p{
-
-        font-size: 1.5;
-
-        padding-left: 30px ;
+    h2 {
+      color: $primary-text-color;
+      font-size: 2em;
     }
+  }
 }
 
-
-main{
-    background-color: $primary-color;
+footer {
+  width: 100%;
+  height: 25px;
+  background-color: $tertiary-color;
+  text-align: center;
+  color: $primary-text-color;
 }
 
-
-footer{
-width: 100%;
-height:25px;
-}
-article{
-
-    width: auto;
-
-    color:$primary-tex-color;
-
-    display:flex;
-
-    justify-content: space-around;
-
-    .info-section{
-
-        display: flex;
-
-        flex-direction: column;
-
-        padding-top: 50px,;
-
-        gap: 25px;  
-    
-    .info-section{
-        width: 50%;
-        background-color: whitesmoke; 
-        p{
-
-            font-size:$paragraph-size ;
-    
-        }
-    
-        button{
-    
-            width: 12vw;
-    
-            padding: 20px;
-    
-            background-color:$quaternion-color;
-    
-            background: none;
-    
-            border-style: none;
-    
-            border-radius: 35px;
-    
-            color:white
-    
-            font-size 1em;
-    
-          }
-    
-    
-        img{
-    
-            width: 25vw;
-    
-            border-radius: 19px;
-    
-            }
-    }
-    .info-section{
-
-        display: flex;
-        flex-direction: column;
-        padding-top: 50px,;
-        gap: 25px;  
-
-    }
-
-    h1{
-
-        font-size: 3em;
-        padding: 0px;
-        margin: 0px;
-
-    }
-
-    p{
-
-        font-size:$paragraph-size ;
-
-    }
-    .imagen-section{
-        width: 50%;
-        background-color: rgb(119, 109, 64);
-
-    }
-}
-
+/* Estilos para los íconos */
+.heart-icon {
+  @include iconStyle(24px, $primary-color); 
+  &:hover {
+    fill: $secondary-color;
+  }
 }
